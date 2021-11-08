@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './accesss/login/login.component';
 import { ProductsComponent } from './pages/maintenances/products/products.component';
 import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.component';
+import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.com
     SidebarComponent,
     LoginComponent,
     ProductsComponent,
-    CampaignsComponent
+    CampaignsComponent,
+    MaintenancesComponent
   ],
   imports: [
     BrowserModule,

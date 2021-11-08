@@ -1,1 +1,125 @@
-<p>campaigns works!</p>
+<app-sidebar></app-sidebar>
+<div id="main">
+  <header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+      <i class="bi bi-justify fs-3"></i>
+    </a>
+  </header>
+
+  <div class="page-heading">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+          <h3>Campañas</h3>
+          <p class="text-subtitle text-muted">Mantenimiento que se encarga de almacenar toda la información de uno o mas
+            campañas </p>
+        </div>
+        <div class="col-12 col-md-6 order-md-2 order-first">
+          <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Mantenimientos</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Campañas</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <div class="col-sm-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary me-1 mb-4">Agregar Campaña</button>
+          </div>
+          <table class="table table-striped" id="table1">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Beneficio</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CAMP0001</td>
+                <td>Campaña navideña 2021</td>
+                <td>Descuento</td>
+                <td>20/08/2020</td>
+                <td>30/08/2020</td>
+                <td>
+                  <span class="badge bg-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0002</td>
+                <td>Campaña descuento abuelo 2021</td>
+                <td>Descuento</td>
+                <td>19/08/2020</td>
+                <td>22/08/2020</td>
+                <td>
+                  <span class="badge bg-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0003</td>
+                <td>Campaña día de la madre</td>
+                <td>Descuento</td>
+                <td>20/08/2020</td>
+                <td>24/08/2020</td>
+                <td>
+                  <span class="badge bg-danger">Inactive</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0004</td>
+                <td>Campaña día del padre</td>
+                <td>Descuento</td>
+                <td>21/08/2020</td>
+                <td>24/08/2020</td>
+                <td>
+                  <span class="badge bg-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0005</td>
+                <td>Campaña fiestas patrias</td>
+                <td>Descuento</td>
+                <td>21/08/2020</td>
+                <td>11/09/2020</td>
+                <td>
+                  <span class="badge bg-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0006</td>
+                <td>Campaña día de los abuelos</td>
+                <td>Descuento</td>
+                <td>20/08/2020</td>
+                <td>23/08/2020</td>
+                <td>
+                  <span class="badge bg-danger">Inactive</span>
+                </td>
+              </tr>
+              <tr>
+                <td>CAMP0007</td>
+                <td>Campaña día de la madre 2020</td>
+                <td>Descuento</td>
+                <td>21/08/2020</td>
+                <td>25/08/2020</td>
+                <td>
+                  <span class="badge bg-success">Active</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
