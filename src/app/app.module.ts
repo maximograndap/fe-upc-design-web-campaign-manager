@@ -12,6 +12,7 @@ import { ProductsComponent } from './pages/maintenances/products/products.compon
 import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.component';
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     ProductsComponent,
     CampaignsComponent,
     MaintenancesComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
