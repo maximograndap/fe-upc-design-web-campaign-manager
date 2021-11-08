@@ -11,6 +11,7 @@ import { LoginComponent } from './accesss/login/login.component';
 import { ProductsComponent } from './pages/maintenances/products/products.component';
 import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.component';
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MaintenancesComponent } from './pages/maintenances/maintenances.compone
     LoginComponent,
     ProductsComponent,
     CampaignsComponent,
-    MaintenancesComponent
+    MaintenancesComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
