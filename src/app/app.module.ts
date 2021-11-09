@@ -15,6 +15,7 @@ import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.com
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/customer-campaigns.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CampaignsComponent,
     MaintenancesComponent,
     UserInfoComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CustomerCampaignsComponent
   ],
   imports: [
     BrowserModule,
