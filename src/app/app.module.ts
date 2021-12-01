@@ -16,6 +16,7 @@ import { MaintenancesComponent } from './pages/maintenances/maintenances.compone
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/customer-campaigns.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/c
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
