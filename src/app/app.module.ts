@@ -15,7 +15,10 @@ import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.com
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/customer-campaigns.component';
+import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports.component';
+import { CampaingsreportsComponent } from './pages/reports/campaingsreports/campaingsreports.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/c
     MaintenancesComponent,
     UserInfoComponent,
     NotFoundComponent,
-    CustomerCampaignsComponent
+    BonosreportsComponent,
+    CampaingsreportsComponent,
+    ReportsComponent
+  
   ],
   imports: [
     BrowserModule,
