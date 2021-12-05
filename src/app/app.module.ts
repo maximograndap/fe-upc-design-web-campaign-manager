@@ -21,6 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+import { ProductDetailComponent } from './pages/maintenances/products/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -36,7 +42,8 @@ import { MatInputModule } from '@angular/material/input';
     MaintenancesComponent,
     UserInfoComponent,
     NotFoundComponent,
-    CustomerCampaignsComponent
+    CustomerCampaignsComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,11 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
