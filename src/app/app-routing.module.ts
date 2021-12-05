@@ -6,6 +6,10 @@ import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.com
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 import { ProductsComponent } from './pages/maintenances/products/products.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports.component';
+import { CampaingsreportsComponent } from './pages/reports/campaingsreports/campaingsreports.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,8 +18,11 @@ const routes: Routes = [
   { path: 'maintenances', component: MaintenancesComponent },
   { path: 'maintenances/products', component: ProductsComponent },
   { path: 'maintenances/campaigns', component: CampaignsComponent },
+  { path: 'reports', component: ReportsComponent},
+  { path: 'reports/bonosreports', component: BonosreportsComponent},
+  { path: 'reports/campaingsreports', component: CampaingsreportsComponent},
   { path: 'not-found', component: NotFoundComponent },
-  { path: '**', pathMatch: 'full', component: NotFoundComponent },
+  
 ];
 
 @NgModule({

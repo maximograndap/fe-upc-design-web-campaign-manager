@@ -15,7 +15,6 @@ import { CampaignsComponent } from './pages/maintenances/campaigns/campaigns.com
 import { MaintenancesComponent } from './pages/maintenances/maintenances.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CustomerCampaignsComponent } from './pages/reports/customer-campaigns/customer-campaigns.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
@@ -27,6 +26,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { ProductDetailComponent } from './pages/maintenances/products/product-detail/product-detail.component';
+import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports.component';
+import { CampaingsreportsComponent } from './pages/reports/campaingsreports/campaingsreports.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+
 
 
 @NgModule({
@@ -42,8 +45,11 @@ import { ProductDetailComponent } from './pages/maintenances/products/product-de
     MaintenancesComponent,
     UserInfoComponent,
     NotFoundComponent,
-    CustomerCampaignsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    BonosreportsComponent,
+    CampaingsreportsComponent,
+    ReportsComponent
+
   ],
   imports: [
     BrowserModule,
