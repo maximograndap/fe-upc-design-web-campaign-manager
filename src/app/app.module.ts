@@ -29,6 +29,7 @@ import { ProductDetailComponent } from './pages/maintenances/products/product-de
 import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports.component';
 import { CampaingsreportsComponent } from './pages/reports/campaingsreports/campaingsreports.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { CampaignDetailComponent } from './pages/maintenances/campaigns/campaign-detail/campaign-detail.component';
 
 
 
@@ -48,7 +49,8 @@ import { ReportsComponent } from './pages/reports/reports.component';
     ProductDetailComponent,
     BonosreportsComponent,
     CampaingsreportsComponent,
-    ReportsComponent
+    ReportsComponent,
+    CampaignDetailComponent
 
   ],
   imports: [
