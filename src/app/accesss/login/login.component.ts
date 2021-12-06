@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IResponse } from 'src/app/interfaces/response.interface';
+import { IUser } from 'src/app/interfaces/user.interface';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +13,33 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-  })
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
-
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    })
   }
 
 
-  __onSubmit() {
+  onSubmit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this.router.navigateByUrl('/');
-      // alert("BIENVENIDO !")
+      const nombreUsuario = this.loginForm.get('username')?.value;
+      const password = this.loginForm.get('password')?.value;
+      this.loginService.login(nombreUsuario, password)
+        .subscribe((response: IResponse) => {
+          if (response.issuccess) {
+            const user: IUser = response.data as IUser;
+            localStorage.setItem('JWT-TOKEN', user.token)
+            console.log('LOGIN EXITOSO : ', response);
+            this.router.navigateByUrl('/');
+          } else {
+            alert("Credenciales inválidas, intente nuevamente!!")
+          }
+        })
     } else {
       alert("Complete las credenciales!!")
     }
