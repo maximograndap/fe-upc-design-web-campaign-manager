@@ -17,12 +17,12 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'maintenances', component: MaintenancesComponent },
-  { path: 'maintenances/products', component: ProductsComponent },
-  { path: 'maintenances/campaigns', component: CampaignsComponent },
-  { path: 'reports', component: ReportsComponent },
-  { path: 'reports/bonosreports', component: BonosreportsComponent },
-  { path: 'reports/campaingsreports', component: CampaingsreportsComponent },
+  { path: 'maintenances', component: MaintenancesComponent, canActivate:[AuthGuard]  },
+  { path: 'maintenances/products', component: ProductsComponent, canActivate:[AuthGuard]  },
+  { path: 'maintenances/campaigns', component: CampaignsComponent, canActivate:[AuthGuard]  },
+  { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]  },
+  { path: 'reports/bonosreports', component: BonosreportsComponent, canActivate:[AuthGuard]  },
+  { path: 'reports/campaingsreports', component: CampaingsreportsComponent, canActivate:[AuthGuard]  },
   { path: '**', component: NotFoundComponent },
 
 
