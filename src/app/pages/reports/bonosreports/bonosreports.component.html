@@ -28,23 +28,25 @@
 <section class="section">
 
   <div class="card">
-      <div class="card-body">      
+      <div class="card-body">   
+        <form [formGroup]="searchForm" (ngSubmit)="submitForm()">   
         <div class="row ">
           <div class="d-flex bd-highlight">
             <div class="p-2 flex-fill bd-highlight">
               <label>Código del cliente: </label>
             </div>
             <div class="p-2 flex-fill bd-highlight">
-              <input type="text" class="form-control" maxlength="8" placeholder="Ingrese codigo del cliente">
+              <input type="text" formControlName="search" class="form-control" maxlength="8" placeholder="Ingrese codigo del cliente ejm: 45559625">
             </div>
             <div class="p-2 flex-fill bd-highlight">
-              <button type="button" class="btn btn-primary">Buscar</button>  
+              <button type="submit" class="btn btn-primary">Buscar</button>  
             </div>
-            <div class="p-2 flex-fill bd-highlight">
-              <u><h4 class="text-muted">CLIENTE: LOPEZ ARRIETA, JESUS ALBERTO</h4></u> 
+            <div class="p-6 flex-fill bd-highlight">
+              <!-- <u><h4 class="text-muted">45559625 : LOPEZ ARRIETA, JESUS ALBERTO</h4></u>  -->
             </div>
           </div>
         </div>
+      </form>
       </div>
   </div>
   </section>
@@ -65,44 +67,25 @@
         <tr>
           <th>Cód. Bono</th>
           <th>Nombre del Bono</th>
-          <th>Nro. Comprobante</th>        
-          <th>Fecha Registro</th>
-          <th>Monto</th>
+          <th>Fecha de Aplicacion</th>        
+          
+          <th>Numero de comprobante</th>
+          <th>Monto Descuento</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>BNDSC_10</td>
-          <td>Descuento 10% Ibuprofeno</td>
-          <td>0001-0065621</td>               
-          <td>20/08/2020</td>
-          <td>10.20</td>
-        </tr>
-        <tr>
-          <td>BNDSC_20</td>
-          <td>Descuento 20% Levofloxacino</td>
-          <td>0001-0065215</td>              
-          <td>17/08/2020</td>
-          <td>5.20</td>
-        </tr>
-        <tr>
-          <td>BNDSC_10</td>
-          <td>Descuento 10% Clindamicina </td>
-          <td>0001-0065111</td>               
-          <td>10/08/2020</td>
-          <td>4.20
-          </td>
-        </tr>
-        <tr>
-          <td>BNDSC_01</td>
-          <td>Regalo gorra</td>
-          <td>0001-0065021</td>            
-          <td>03/08/2020</td>
-          <td>1.00</td>
+        <tr *ngFor="let i of customerbonos?.bonos">
+          <td>{{i.idBono}}</td>
+          <td>{{i.descBono}}</td>
+          <td>{{i.fechaAplicacion}}</td>
+          
+          <td>{{i.numeroComprobante}}</td>
+          <td>{{i.descuento}}</td>
+        
         </tr>
       </tbody>
       </table>
-      <div class="col-12 d-flex justify-content-end">    
+      <!-- <div class="col-12 d-flex justify-content-end">    
       <div class="col-6"></div>   
       <div class="col-2"></div>                         
       <div class ="form-group col-2">
@@ -111,7 +94,7 @@
       <div class="col-2">
           <input type="text" class="form-control " placeholder="S/ 20.60" disabled>
       </div>
-      </div>  
+      </div>   -->
     </div>
   </div>
 </section>
@@ -123,46 +106,25 @@
     <table class="table table-striped" id="table1" >
       <thead>
         <tr>
-          <th>Cód. Bono</th>
-          <th>Nombre del Bono</th>
-          <th>Nro. Comprobante</th>        
-          <th>Fecha Registro</th>
-          <th>Monto</th>
+          <th>Cód. Obsq</th>
+          <th>Nombre del Obsq</th>
+          <th>Fecha de Aplicacion</th>                  
+          <th>Numero de comprobante</th>
+          <th>Valor Obsequio</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>OBSQ_08</td>
-          <td>Descuento 10% Ibuprofeno</td>
-          <td>0001-0065621</td>               
-          <td>20/08/2020</td>
-          <td>10.20</td>
-        </tr>
-        <tr>
-          <td>OBSQ_09</td>
-          <td>Descuento 20% Levofloxacino</td>
-          <td>0001-0065215</td>              
-          <td>17/08/2020</td>
-          <td>5.20</td>
-        </tr>
-        <tr>
-          <td>OBSQ_10</td>
-          <td>Descuento 10% Clindamicina </td>
-          <td>0001-0065111</td>               
-          <td>10/08/2020</td>
-          <td>4.20
-          </td>
-        </tr>
-        <tr>
-          <td>OBSQ_11</td>
-          <td>Regalo gorra</td>
-          <td>0001-0065021</td>            
-          <td>03/08/2020</td>
-          <td>10.00</td>
+        <tr *ngFor="let i of customerbonos?.obsequios">
+          <td>{{i.idObsequio}}</td>
+          <td>{{i.nombreObsequio}}</td>
+          <td>{{i.fechaAplicacion}}</td>     
+          <td>{{i.numeroComprobante}}</td>
+          <td>{{i.valorObsequio}}</td>        
         </tr>
       </tbody>
+        
     </table>
-    <div class="col-12 d-flex justify-content-end">    
+    <!-- <div class="col-12 d-flex justify-content-end">    
       <div class="col-6"></div>   
       <div class="col-2"></div>                         
       <div class ="form-group col-2">
@@ -171,10 +133,9 @@
       <div class="col-2">
           <input type="text" class="form-control " placeholder="S/ 30.60" disabled>
       </div>
-    </div>  
+    </div>   -->
   </div>
 </div>
-
 </section>
 
 </div>
