@@ -13,14 +13,15 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   list(): Observable<IResponse> {
-    return this.http.get<IResponse>(`${environment.apiUrl + this.path}getallproducts`, { headers: this.headers }).pipe();
+    console.log('HEADERS:', this.headers);
+    return this.http.get<IResponse>(`${environment.apiUrl + this.path}getallproducts`).pipe();
   }
 
-  get(idProduct: string): Observable<IProduct> {
-    return this.http.get<IProduct>(`${environment.apiUrl + this.path}getproduct?idProduct=${idProduct}`, { headers: this.headers }).pipe();
+  get(idProduct: string): Observable<IResponse> {
+    return this.http.get<IResponse>(`${environment.apiUrl + this.path}getproduct?idProduct=${idProduct}`).pipe();
   }
 
-  add(product: IProduct): Observable<IProduct> {
+  add(product: IProduct): Observable<IResponse> {
     const request = {
       nombreProducto: product.nombreProducto,
       descProducto: product.descProducto,
@@ -28,10 +29,10 @@ export class ProductService {
       idCategoriaProducto: Number(product.idCategoriaProducto),
     }
 
-    return this.http.post<IProduct>(`${environment.apiUrl + this.path}insertproduct`, request).pipe();
+    return this.http.post<IResponse>(`${environment.apiUrl + this.path}insertproduct`, request, { headers: this.headers }).pipe();
   }
 
-  update(product: IProduct): Observable<IProduct> {
+  update(product: IProduct): Observable<IResponse> {
     const request = {
       idProducto: product.idProducto,
       nombreProducto: product.nombreProducto,
@@ -39,6 +40,6 @@ export class ProductService {
       precioProducto: Number(product.precioProducto),
       idCategoriaProducto: Number(product.idCategoriaProducto),
     }
-    return this.http.post<IProduct>(`${environment.apiUrl + this.path}updateproduct`, request).pipe();
+    return this.http.post<IResponse>(`${environment.apiUrl + this.path}updateproduct`, request, { headers: this.headers }).pipe();
   }
 }

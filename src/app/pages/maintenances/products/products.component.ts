@@ -52,9 +52,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   listarProductos() {
     this.productService.list()
-      .subscribe(({ data }: IResponse) => {
+      .subscribe((response: IResponse) => {
+        const data : IProduct[] = response.data as IProduct[]
         this.dataSource = new MatTableDataSource(data);
-
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         console.log('listado de productos :', data);

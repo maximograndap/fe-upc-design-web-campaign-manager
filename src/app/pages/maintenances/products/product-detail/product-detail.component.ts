@@ -70,7 +70,7 @@ export class ProductDetailComponent implements OnInit {
     this.form = this.fb.group({
       idProducto: [pr.idProducto],
       nombreProducto: [pr.nombreProducto, [Validators.required, Validators.minLength(5)]],
-      descProducto: [pr.descProducto, [Validators.maxLength(30)]],
+      descProducto: [pr.descProducto, [Validators.maxLength(60)]],
       precioProducto: [pr.precioProducto, [Validators.required]],
       idCategoriaProducto: [pr.idCategoriaProducto, [Validators.required]],
       indicadorAplicacion: [pr.indicadorAplicacion],
