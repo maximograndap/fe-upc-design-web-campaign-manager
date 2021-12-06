@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { IResponse } from 'src/app/interfaces/response.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
-import { LoginService } from 'src/app/services/login.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router,
     private snackBar: MatSnackBar,
-    private loginService: LoginService) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const nombreUsuario = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
-      this.loginService.login(nombreUsuario, password)
+      this.authService.login(nombreUsuario, password)
         .subscribe((response: IResponse) => {
           if (response.issuccess) {
             const user: IUser = response.data as IUser;

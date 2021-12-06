@@ -25,7 +25,8 @@ export class UserInfoComponent implements OnInit {
   signOut() {
     localStorage.removeItem('USER-INFO')
     localStorage.removeItem('JWT-TOKEN')
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['login'])
+
   }
 
 }
