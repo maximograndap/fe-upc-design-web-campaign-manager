@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-user-info',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor() { }
+  user: string
+  userDetail: string
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    const ui = localStorage.getItem('USER-INFO')
+    if (ui) {
+      const userInfo: IUser = JSON.parse(ui)
+      this.user = `${userInfo.nombrePersona} ${userInfo.apellidoPersona}`
+      this.userDetail = `${userInfo.nombreusuario} (${userInfo.idUsuario}) | ${userInfo.numeroDocumento}`
+    }
+  }
+
+  signOut() {
+    localStorage.removeItem('USER-INFO')
+    localStorage.removeItem('JWT-TOKEN')
+    this.router.navigateByUrl('/login');
   }
 
 }

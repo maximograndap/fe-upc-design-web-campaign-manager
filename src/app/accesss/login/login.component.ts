@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
             const user: IUser = response.data as IUser;
             localStorage.setItem('JWT-TOKEN', JSON.stringify(user.token))
             delete user.token
-            localStorage.setItem('INFO-USER', JSON.stringify(user))
+            localStorage.setItem('USER-INFO', JSON.stringify(user))
             this.snackBar.open(`✅ Inicio de sesión exitoso, bienvenido ${user.nombrePersona} ${user.apellidoPersona} !!`, undefined, this.matSnackConfig);
             this.router.navigateByUrl('/');
           } else {

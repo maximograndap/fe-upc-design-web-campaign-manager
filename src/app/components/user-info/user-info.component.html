@@ -5,12 +5,12 @@
         <img src="assets/images/faces/1.jpg" alt="Face 1">
       </div>
       <div class="ms-3 name">
-        <h5 class="font-bold">Daniel Huaman</h5>
-        <h6 class="text-muted mb-0">danielhuaman@outlook.com</h6>
+        <h5 class="font-bold">{{ user }}</h5>
+        <h6 class="text-muted mb-0">{{ userDetail}}</h6>
       </div>
     </div>
     <div style="padding-left: 80px;" class="mt-3">
-      <a style="color: #435ebe;" [routerLink]="['/login']">Cerrar sesión</a>
+      <a style="color: #435ebe;" (click)="signOut()">Cerrar sesión</a>
     </div>
   </div>
 </div>
