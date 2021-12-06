@@ -5,7 +5,7 @@
       <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Código</mat-label>
-          <input matInput formControlName="idProducto">
+          <input readonly="true" matInput formControlName="idProducto">
         </mat-form-field>
       </div>
       <div class="col-md-6 col-12">
@@ -26,7 +26,7 @@
       <div class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Precio</mat-label>
-          <input matInput placeholder="Precio de producto" formControlName="precioProducto" required>
+          <input matInput placeholder="Precio de producto (soles)" formControlName="precioProducto" required>
           <mat-error *ngIf="errorHandling('precioProducto', 'required')">
             El <strong>precio</strong> de producto es obligatorio.
           </mat-error>
@@ -47,16 +47,16 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Beneficios</mat-label>
-          <input matInput formControlName="indicadorAplicacion">
+          <input readonly="true" matInput formControlName="indicadorAplicacion">
         </mat-form-field>
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Estado</mat-label>
-          <mat-select formControlName="flgEstado" required>
+          <mat-select readonly="true" formControlName="flgEstado" required>
             <mat-option value="A">ACTIVO</mat-option>
             <mat-option value="I">INACTIVO</mat-option>
           </mat-select>
@@ -71,25 +71,25 @@
       <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Usuario de registro</mat-label>
-          <input matInput formControlName="usuarioCreacion">
+          <input readonly="true" matInput formControlName="usuarioCreacion">
         </mat-form-field>
       </div>
       <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Fecha de registro</mat-label>
-          <input matInput formControlName="fechaCreacion">
+          <input readonly="true" matInput formControlName="fechaCreacion">
         </mat-form-field>
       </div>
       <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Usuario de actualización</mat-label>
-          <input matInput formControlName="usuarioActualizacion">
+          <input readonly="true" matInput formControlName="usuarioActualizacion">
         </mat-form-field>
       </div>
       <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Fecha de actualización</mat-label>
-          <input matInput formControlName="fechaActualizacion">
+          <input readonly="true" matInput formControlName="fechaActualizacion">
         </mat-form-field>
       </div>
     </div>

@@ -5,15 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { IProduct } from 'src/app/interfaces/product.interface';
-
-const NAMES: string[] = [
-  'Clindamicina 600mg', 'Levofloxacino 600mg', 'Neurobion 500mg', 'Neurobion 800mg', 'Levofloxacino 300mg', 'Clindamicina 600mg', 'Amoxixilina 500', 'Naproxeno 500'
-];
-
-const PRICES: string[] = ['S/ 40.00', 'S/35.00', 'S/120.50', 'S/315.00', 'S/20.50', 'S/45.60', 'S/110.35', 'S/45.00', 'S/10.50',];
-const STATUS: string[] = ['Activo', 'Inactivo'];
-const BENEFITS: string[] = ['Descuento', 'Obsequio'];
-const USERNAME: string[] = ['DHUAMAN', 'LGUTARRA', 'MAXIMO'];
+import { ProductService } from 'src/app/services/products.service';
+import { IResponse } from 'src/app/interfaces/response.interface';
 
 @Component({
   selector: 'app-products',
@@ -28,17 +21,14 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog) {
-    const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-    this.dataSource = new MatTableDataSource(users);
+  constructor(public dialog: MatDialog, private productService: ProductService) {
+    this.listarProductos()
   }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
@@ -58,27 +48,15 @@ export class ProductsComponent implements OnInit, AfterViewInit {
       console.log(`Dialog result: ${JSON.stringify(result)}`);
     });
   }
-}
 
-function createNewUser(id: number): IProduct {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))];
-  const price = PRICES[Math.round(Math.random() * (NAMES.length - 1))];
-  const status = STATUS[Math.round(Math.random() * (STATUS.length - 1))];
-  const benefit = BENEFITS[Math.round(Math.random() * (BENEFITS.length - 1))];
-  const username = USERNAME[Math.round(Math.random() * (BENEFITS.length - 1))];
+  listarProductos() {
+    this.productService.list()
+      .subscribe(({ data }: IResponse) => {
+        this.dataSource = new MatTableDataSource(data);
 
-  // return { id: id.toString(), name, price, benefit, date: new Date().toISOString(), status };
-  return {
-    idProducto: id.toString(),
-    nombreProducto: name,
-    descProducto: 'descripcion dummy',
-    precioProducto: price,
-    idCategoriaProducto: 'string',
-    indicadorAplicacion: benefit,
-    flgEstado: status,
-    fechaCreacion: new Date().toISOString(),
-    usuarioCreacion: username,
-    fechaActualizacion: new Date().toISOString(),
-    usuarioActualizacion: username,
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log('listado de productos :', data);
+      })
   }
 }

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { ProductService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,27 +17,20 @@ export class ProductDetailComponent implements OnInit {
   isNewRecord: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: IProduct, private dialogRef: MatDialogRef<ProductDetailComponent>,
-    public fb: FormBuilder) {
+    public fb: FormBuilder, private productService: ProductService) {
     console.log('DATA ENTRANTE : ', JSON.stringify(data));
     this.isNewRecord = data.idProducto ? false : true;
     if (this.isNewRecord) {
       this.title = 'NUEVO PRODUCTO';
       this.productRequest = {
-        idProducto: '',
         nombreProducto: '',
         descProducto: '',
         precioProducto: '',
-        idCategoriaProducto: '',
-        indicadorAplicacion: '',
-        flgEstado: '',
-        fechaCreacion: '',
-        usuarioCreacion: '',
-        fechaActualizacion: '',
-        usuarioActualizacion: '',
+        idCategoriaProducto: ''
       };
     } else {
       this.title = 'ACTUALIZAR PRODUCTO';
-      this.productRequest = { ...data };
+      this.productRequest = { ...data, idCategoriaProducto: String(data.idCategoriaProducto) };
     }
   }
 
@@ -54,6 +48,20 @@ export class ProductDetailComponent implements OnInit {
       return;
     }
 
+    if (this.isNewRecord) {
+      console.log('NUEVO RECORD');
+      this.productService.add(this.form.value)
+        .subscribe(response => {
+          console.log('GUARDADO : ', response);
+        })
+    } else {
+      console.log('ACTUALIZAR RECORD');
+      this.productService.update(this.form.value)
+        .subscribe(response => {
+          console.log('GUARDADO : ', response);
+        })
+    }
+
     this.dialogRef.close({ data: this.form.value })
   }
 
@@ -66,7 +74,7 @@ export class ProductDetailComponent implements OnInit {
       precioProducto: [pr.precioProducto, [Validators.required]],
       idCategoriaProducto: [pr.idCategoriaProducto, [Validators.required]],
       indicadorAplicacion: [pr.indicadorAplicacion],
-      flgEstado: [pr.flgEstado, [Validators.required]],
+      flgEstado: [pr.flgEstado],
       fechaCreacion: [pr.fechaCreacion],
       usuarioCreacion: [pr.usuarioCreacion],
       fechaActualizacion: [pr.fechaActualizacion],
