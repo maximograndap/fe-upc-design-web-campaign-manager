@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { IResponse } from 'src/app/interfaces/response.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
@@ -11,11 +17,19 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  matSnackConfig: MatSnackBarConfig = {
+    horizontalPosition: this.horizontalPosition,
+    verticalPosition: this.verticalPosition,
+    duration: 2500,
+  }
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, private router: Router,
+    private snackBar: MatSnackBar,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -23,7 +37,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
     })
   }
-
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -33,15 +46,25 @@ export class LoginComponent implements OnInit {
         .subscribe((response: IResponse) => {
           if (response.issuccess) {
             const user: IUser = response.data as IUser;
-            localStorage.setItem('JWT-TOKEN', user.token)
-            console.log('LOGIN EXITOSO : ', response);
+            localStorage.setItem('JWT-TOKEN', JSON.stringify(user.token))
+            delete user.token
+            localStorage.setItem('INFO-USER', JSON.stringify(user))
+            this.snackBar.open(`✅ Inicio de sesión exitoso, bienvenido ${user.nombrePersona} ${user.apellidoPersona} !!`, undefined, this.matSnackConfig);
             this.router.navigateByUrl('/');
           } else {
-            alert("Credenciales inválidas, intente nuevamente!!")
+            this.snackBar.open('⚠️ Credenciales inválidas, intente nuevamente!!', undefined, this.matSnackConfig);
           }
         })
     } else {
-      alert("Complete las credenciales!!")
+      this.snackBar.open('⚠️ Complete las credenciales!!', undefined, this.matSnackConfig);
+    }
+  }
+
+  fnProximamente(option: number) {
+    if (option === 1) {
+      this.snackBar.open('⚠️ Esta opción estará habilitado proximamente !', undefined, this.matSnackConfig);
+    } else {
+      this.snackBar.open('⚠️ Consulte con el administrador "danielhuaman@outlook.com" para recuperar su contraseña!', undefined, this.matSnackConfig);
     }
   }
 }

@@ -30,6 +30,7 @@ import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports
 import { CampaingsreportsComponent } from './pages/reports/campaingsreports/campaingsreports.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { CampaignDetailComponent } from './pages/maintenances/campaigns/campaign-detail/campaign-detail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -65,7 +66,8 @@ import { CampaignDetailComponent } from './pages/maintenances/campaigns/campaign
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
