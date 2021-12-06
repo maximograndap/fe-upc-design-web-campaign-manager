@@ -4,6 +4,7 @@ export interface IProduct {
   descProducto?: string;
   precioProducto: string;
   idCategoriaProducto: string;
+  nombreCategoriaProducto?: string;
   indicadorAplicacion?: string;
   flgEstado?: string;
   fechaCreacion?: string;
