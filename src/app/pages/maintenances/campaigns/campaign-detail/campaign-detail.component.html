@@ -1,1 +1,115 @@
-<p>campaign-detail works!</p>
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form id="formMaintenance" [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+    <div *ngIf="campaignRequest" class="row">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Código</mat-label>
+          <input readonly="true" matInput formControlName="idCampania">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre de campaña" formControlName="nombreCampania" required>
+          <mat-error *ngIf="errorHandling('nombreCampania', 'required')">
+            El <strong>nombre</strong> de campaña es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="errorHandling('nombreCampania', 'minlength')">
+            Mínimo 5 carácteres para el nombre de <strong>campaña</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descripción</mat-label>
+          <input matInput placeholder="Descripción de campaña" formControlName="descCampania">
+          <mat-error *ngIf="errorHandling('descCampania', 'maxlength')">
+            Máximo 60 carácteres para la descripción del <strong>campaña</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput placeholder="Fecha Inicio" formControlName="fechaInicio" required>
+          <mat-error *ngIf="errorHandling('fechaInicio', 'required')">
+            La <strong>fecha de inicio</strong> de la campaña es obligatorio.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput placeholder="Fecha Fin" formControlName="fechaFin" required>
+          <mat-error *ngIf="errorHandling('fechaFin', 'required')">
+            La <strong>fecha de inicio</strong> de la campaña es obligatorio.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tipo de Campaña</mat-label>
+          <mat-select formControlName="idTipoCampania" required>
+            <mat-option value="1000">FIDELIZACIÓN CLIENTES</mat-option>
+            <mat-option value="1001">CAPTACIÓN NUEVOS CLIENTES</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idTipoCampania', 'required')">
+            Seleccionar un <strong>tipo de campaña</strong> es obligatorio.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tipo de Beneficio</mat-label>
+          <mat-select formControlName="idTipoBeneficio" required>
+            <mat-option value="1000">BONO</mat-option>
+            <mat-option value="1001">OBSEQUIO</mat-option>
+            <mat-option value="1002">BONO/OBSEQUIO</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idTipoBeneficio', 'required')">
+            Seleccionar un <strong>tipo de beneficio</strong> es obligatorio.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Estado</mat-label>
+          <input readonly="true" matInput formControlName="flgEstado">
+        </mat-form-field>
+      </div>
+      <div>
+        <hr />
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario de registro</mat-label>
+          <input readonly="true" matInput formControlName="usuarioCreacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha de registro</mat-label>
+          <input readonly="true" matInput formControlName="fechaCreacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario de actualización</mat-label>
+          <input readonly="true" matInput formControlName="usuarioActualizacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha de actualización</mat-label>
+          <input readonly="true" matInput formControlName="fechaActualizacion">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="cancel()">Cancelar</button>
+  <button type="submit" form="formMaintenance" mat-button cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

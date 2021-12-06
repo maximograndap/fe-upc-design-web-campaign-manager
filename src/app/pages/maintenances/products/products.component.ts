@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { IProduct } from 'src/app/interfaces/product.interface';
-import { ProductService } from 'src/app/services/products.service';
+import { ProductService } from 'src/app/services/product.service';
 import { IResponse } from 'src/app/interfaces/response.interface';
 
 @Component({
@@ -57,7 +57,6 @@ export class ProductsComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        console.log('listado de productos :', data);
       })
   }
 }
