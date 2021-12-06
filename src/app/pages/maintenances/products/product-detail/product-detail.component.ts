@@ -69,12 +69,12 @@ export class ProductDetailComponent implements OnInit {
     const pr = this.productRequest;
     this.form = this.fb.group({
       idProducto: [pr.idProducto],
-      nombreProducto: [pr.nombreProducto, [Validators.required]],
-      descProducto: [pr.descProducto],
+      nombreProducto: [pr.nombreProducto, [Validators.required, Validators.minLength(5)]],
+      descProducto: [pr.descProducto, [Validators.maxLength(30)]],
       precioProducto: [pr.precioProducto, [Validators.required]],
       idCategoriaProducto: [pr.idCategoriaProducto, [Validators.required]],
       indicadorAplicacion: [pr.indicadorAplicacion],
-      flgEstado: [pr.flgEstado],
+      flgEstado: [pr.flgEstado === 'A' ? 'ACTIVO' : 'INACTIVO'],
       fechaCreacion: [pr.fechaCreacion],
       usuarioCreacion: [pr.usuarioCreacion],
       fechaActualizacion: [pr.fechaActualizacion],

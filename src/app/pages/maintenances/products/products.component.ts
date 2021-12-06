@@ -45,7 +45,8 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(ProductDetailComponent, { data: { ...row } });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${JSON.stringify(result)}`);
+      // console.log(`Dialog result: ${JSON.stringify(result)}`);
+      this.listarProductos()
     });
   }
 
