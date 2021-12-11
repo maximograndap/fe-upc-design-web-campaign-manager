@@ -1,0 +1,224 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form id="formConfigurar" [formGroup]="form" (ngSubmit)="submitFormConf()" novalidate>
+    <div *ngIf="campaignRequest" class="row">
+        <div *ngIf="!isNewRecord" class="col-md-6 col-12">
+            <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Código</mat-label>
+            <input readonly="true" matInput formControlName="idCampania">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input readonly="true" matInput formControlName="nombreCampania">          
+            </mat-form-field>
+        </div>
+        <div>
+            <p align='center'><b>CRITERIOS DE ENTREGA DEL BENEFICIO</b></p>
+            <hr />
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Descripción de la regla</mat-label>
+                <input matInput placeholder="Descripción de la regla" formControlName="nombreRegla" required>
+                <mat-error *ngIf="errorHandling('descCampania', 'maxlength')">
+                Máximo 160 carácteres para el nombre de la regla de la <strong>campaña</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div> 
+          <div>                    
+                Criterio de evaluación 1:                
+          </div>                                
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Criterio</mat-label>                
+                <mat-select formControlName="idCriterio" required>
+                    <mat-option value="1000">Edad del Cliente</mat-option>
+                    <mat-option value="1001">Canal de Venta</mat-option>
+                    <mat-option value="1002">Categoria Producto</mat-option>
+                    <mat-option value="1003">Monto Neto Total</mat-option>
+                    <mat-option value="1004">Cantidad Productos Venta</mat-option>
+                  </mat-select>
+                <mat-error *ngIf="errorHandling('idCriterio', 'required')">
+                    Seleccionar un <strong>criterio</strong>.
+                </mat-error>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;        
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Condicional Comparativo</mat-label>
+                <mat-select formControlName="idCondiCompara" required>
+                    <mat-option value="1000">IGUAL A</mat-option>
+                    <mat-option value="1001">MAYOR QUE</mat-option>
+                    <mat-option value="1002">MENOR QUE</mat-option>
+                    <mat-option value="1003">MAYOR O IGUAL QUE</mat-option>
+                    <mat-option value="1004">MENOR O IGUAL QUE</mat-option>
+                    <mat-option value="1004">DISTINTO</mat-option>
+                    <mat-option value="1004">CONTIENE</mat-option>
+                  </mat-select>
+                <mat-error *ngIf="errorHandling('idCondiCompara', 'required')">
+                    Seleccionar una <strong>condición</strong>.
+                </mat-error>            
+            </mat-form-field>&nbsp;&nbsp;&nbsp;    
+            <mat-form-field appearance="outline" class="full-width">                    
+                  <mat-label>Valor criterio</mat-label>
+                  <input matInput placeholder="Valor criterio" formControlName="ValorCriterio" required>
+            </mat-form-field>
+            <div>                    
+                <mat-radio-group aria-label="Seleccione condicional de grupo">
+                    <mat-radio-button value="1">Y&nbsp;&nbsp;&nbsp;</mat-radio-button>
+                    <mat-radio-button value="2">O</mat-radio-button>
+                </mat-radio-group><br>
+            </div><br>                                
+
+        </div>
+      <div> 
+        <div>                    
+            Criterio de evaluación 2:                
+        </div>                                
+          <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Criterio</mat-label>
+              <mat-select formControlName="idCampoRegla" required>
+                  <mat-option value="1000">Edad del Cliente</mat-option>
+                  <mat-option value="1001">Canal de Venta</mat-option>
+                  <mat-option value="1002">Categoria Producto</mat-option>
+                  <mat-option value="1003">Monto Neto Total</mat-option>
+                  <mat-option value="1004">Cantidad Productos Venta</mat-option>
+                </mat-select>
+              <mat-error *ngIf="errorHandling('idCampoRegla', 'required')">
+                  Seleccionar un <strong>criterio</strong>.
+              </mat-error>
+          </mat-form-field>&nbsp;&nbsp;&nbsp;        
+          <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Operador</mat-label>
+              <mat-select formControlName="idOperadorCompara" required>                
+                  <mat-option value="1000">IGUAL A</mat-option>
+                  <mat-option value="1001">MAYOR QUE</mat-option>
+                  <mat-option value="1002">MENOR QUE</mat-option>
+                  <mat-option value="1003">MAYOR O IGUAL QUE</mat-option>
+                  <mat-option value="1004">MENOR O IGUAL QUE</mat-option>
+                  <mat-option value="1004">DISTINTO</mat-option>
+                  <mat-option value="1004">CONTIENE</mat-option>
+              </mat-select>
+              <mat-error *ngIf="errorHandling('idOperadorCompara', 'required')">
+                  Seleccionar una <strong>condición</strong>.
+              </mat-error>            
+          </mat-form-field>&nbsp;&nbsp;&nbsp;    
+          <mat-form-field appearance="outline" class="full-width">                    
+                <mat-label>Valor criterio</mat-label>
+                <input matInput placeholder="Valor criterio" formControlName="ValorCriterio" required>
+          </mat-form-field>
+    </div>
+    <div>
+        <p align='center'><b>BENEFICIO QUE APLICA EL CLIENTE</b></p>
+        <hr />
+    </div>
+      <div>          
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Producto en Campaña</mat-label>
+          <mat-select formControlName="idProducto1" required>
+            <mat-option value="1000">Pañales 20 unidades PRU</mat-option>
+            <mat-option value="1001">Toallas humedas marca NINET</mat-option>
+            <mat-option value="1002">Talco bebe marca Huggies x 500 gr</mat-option>
+            <mat-option value="1003">Shampoo Hipoalergenico 1L</mat-option>
+            <mat-option value="1004">Expectorante para adultos Ambroxol x 250 ml</mat-option>
+            <mat-option value="1005">Paracetamol 500 mg</mat-option>
+            <mat-option value="1006">Aspirina Forte 20 mg</mat-option>
+            <mat-option value="1007">Ranitidina 100 mg</mat-option>
+            <mat-option value="1008">Antigripal nastisol compuesto 100 mg</mat-option>
+            <mat-option value="1009">Omeprasol compuesto 250 mg</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idProducto1', 'required')">
+            Seleccionar un <strong>producto</strong>
+          </mat-error>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+
+        <mat-form-field appearance="outline" class="full-width">         
+          <mat-label>Seleccione el beneficio</mat-label>
+          <mat-select formControlName="idBono1" required>
+            <mat-option value="B000">Descuento 20% precio venta</mat-option>
+            <mat-option value="B001">Descuento 45.5% precio venta</mat-option>
+            <mat-option value="B002">Descuento 30% precio total</mat-option>
+            <mat-option value="B003">Descuento 10% precio bruto</mat-option>
+            <mat-option value="B004">Descuento 25% precio venta</mat-option>
+            <mat-option value="B005">Descuento 10% precio venta</mat-option>           
+            <mat-option value="B006">Descuento 18% precio venta</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idBono1', 'required')">
+            Seleccionar el <strong>beneficio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>          
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Producto en Campaña</mat-label>
+          <mat-select formControlName="idProducto2" required>
+            <mat-option value="1000">Pañales 20 unidades PRU</mat-option>
+            <mat-option value="1001">Toallas humedas marca NINET</mat-option>
+            <mat-option value="1002">Talco bebe marca Huggies x 500 gr</mat-option>
+            <mat-option value="1003">Shampoo Hipoalergenico 1L</mat-option>
+            <mat-option value="1004">Expectorante para adultos Ambroxol x 250 ml</mat-option>
+            <mat-option value="1005">Paracetamol 500 mg</mat-option>
+            <mat-option value="1006">Aspirina Forte 20 mg</mat-option>
+            <mat-option value="1007">Ranitidina 100 mg</mat-option>
+            <mat-option value="1008">Antigripal nastisol compuesto 100 mg</mat-option>
+            <mat-option value="1009">Omeprasol compuesto 250 mg</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idProducto2', 'required')">
+            Seleccionar un <strong>producto</strong>
+          </mat-error>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+
+        <mat-form-field appearance="outline" class="full-width">         
+          <mat-label>Seleccione el beneficio</mat-label>
+          <mat-select formControlName="idBono2" required>
+            <mat-option value="B000">Descuento 20% precio venta</mat-option>
+            <mat-option value="B001">Descuento 45.5% precio venta</mat-option>
+            <mat-option value="B002">Descuento 30% precio total</mat-option>
+            <mat-option value="B003">Descuento 10% precio bruto</mat-option>
+            <mat-option value="B004">Descuento 25% precio venta</mat-option>
+            <mat-option value="B005">Descuento 10% precio venta</mat-option>           
+            <mat-option value="B006">Descuento 18% precio venta</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errorHandling('idBono2', 'required')">
+            Seleccionar el <strong>beneficio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <hr />
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario de registro</mat-label>
+          <input readonly="true" matInput formControlName="usuarioCreacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha de registro</mat-label>
+          <input readonly="true" matInput formControlName="fechaCreacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario de actualización</mat-label>
+          <input readonly="true" matInput formControlName="usuarioActualizacion">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha de actualización</mat-label>
+          <input readonly="true" matInput formControlName="fechaActualizacion">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="cancel()">Cancelar</button>
+  <button type="submit" form="formConfigurar" mat-button cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>
+
+

@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { CampaignDetailComponent } from './campaign-detail/campaign-detail.component';
+import { CampaignConfigComponent } from './campaign-config/campaign-config.component';
 import { ICampaign } from 'src/app/interfaces/campaign.interface';
 import { CampaignService } from 'src/app/services/campaign.service';
 import { IResponse } from 'src/app/interfaces/response.interface';
@@ -15,7 +16,7 @@ import { IResponse } from 'src/app/interfaces/response.interface';
 })
 
 export class CampaignsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['idCampania', 'nombreCampania', 'fechaInicio', 'fechaFin', 'flgEstado', 'fechaCreacion', 'usuarioCreacion'];
+  displayedColumns: string[] = ['idCampania', 'nombreCampania', 'fechaInicio', 'fechaFin', 'flgEstado','fechaCreacion', 'usuarioCreacion','flgConfigurar'];
 
   dataSource: MatTableDataSource<ICampaign>;
 
@@ -49,6 +50,24 @@ export class CampaignsComponent implements OnInit, AfterViewInit {
         const campaign: ICampaign = response.data as ICampaign;
 
         const dialogRef = this.dialog.open(CampaignDetailComponent, { data: { ...campaign } });
+
+        dialogRef.afterClosed()
+          .subscribe(result => {
+            this.listarCampanias()
+          });
+      })
+
+  }
+
+  openFormConfig(row?: ICampaign) {
+    
+    this.campaignService.get(row?.idCampania)
+    //this.campaignService.get('1000')
+      .subscribe(response => {
+        console.log('RESPONSE DETALLE CAMPAÑA : ', response);
+        const campaign: ICampaign = response.data as ICampaign;
+
+        const dialogRef = this.dialog.open(CampaignConfigComponent, { data: { ...campaign } });
 
         dialogRef.afterClosed()
           .subscribe(result => {

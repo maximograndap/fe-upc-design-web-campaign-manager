@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -31,6 +32,7 @@ import { CampaingsreportsComponent } from './pages/reports/campaingsreports/camp
 import { ReportsComponent } from './pages/reports/reports.component';
 import { CampaignDetailComponent } from './pages/maintenances/campaigns/campaign-detail/campaign-detail.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CampaignConfigComponent } from './pages/maintenances/campaigns/campaign-config/campaign-config.component';
 
 
 
@@ -51,7 +53,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BonosreportsComponent,
     CampaingsreportsComponent,
     ReportsComponent,
-    CampaignDetailComponent
+    CampaignDetailComponent,
+    CampaignConfigComponent
 
   ],
   imports: [
@@ -65,6 +68,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule
