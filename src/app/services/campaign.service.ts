@@ -12,7 +12,8 @@ export class CampaignService {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${localStorage.getItem('JWT-TOKEN')}`
   });
-  path: string = 'api/campaigns/'
+  path: string = 'api/campaigns/';
+  path2: string = 'api/configurecampaign/';
   constructor(private http: HttpClient) { }
 
   list(): Observable<IResponse> {
@@ -47,5 +48,18 @@ export class CampaignService {
       idTipoBeneficio: Number(campaign.idTipoBeneficio),
     }
     return this.http.post<IResponse>(`${environment.apiUrl + this.path}updatecampaign`, request, { headers: this.headers }).pipe();
+  }
+
+  configure(campaign: ICampaign): Observable<IResponse> {
+    const request = {
+      idCampania: campaign.idCampania,
+      nombreCampania: campaign.nombreCampania,
+      descCampania: campaign.descCampania,
+      fechaInicio: campaign.fechaInicio,
+      fechaFin: campaign.fechaFin,
+      idTipoCampania: Number(campaign.idTipoCampania),
+      idTipoBeneficio: Number(campaign.idTipoBeneficio),
+    }
+    return this.http.post<IResponse>(`${environment.apiUrl + this.path2}insertconfigurecampaign`, request, { headers: this.headers }).pipe();
   }
 }

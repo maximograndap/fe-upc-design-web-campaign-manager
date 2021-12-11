@@ -52,16 +52,12 @@ export class CampaignConfigComponent implements OnInit {
       return;
     }
 
-    if (this.isNewRecord) {
-      this.campaignService.add(this.form.value)
-        .subscribe(response => {
-          console.log('GUARDADO : ', response);
-        })
-    } else {
-      this.campaignService.update(this.form.value)
-        .subscribe(response => {
-          console.log('GUARDADO : ', response);
-        })
+    if (!this.isNewRecord) {
+      console.log('REQUEST_CONFIGURE', this.form.value);
+      // this.campaignService.configure(this.form.value)
+      //   .subscribe(response => {
+      //     console.log('GUARDADO : ', response);
+      //   })
     }
 
     this.dialogRef.close({ data: this.form.value })
@@ -73,22 +69,22 @@ export class CampaignConfigComponent implements OnInit {
       idCampania: [pr.idCampania],
       nombreCampania: [pr.nombreCampania, [Validators.required, Validators.minLength(5)]],
       nombreRegla: "",
-      idCriterio:"",
-      idCampoRegla:"",
-      idCondiCompara:"",
-      ValorCriterio:"",
-      idOperadorCompara:"",
-      idProducto1:"",
-      idProducto2:"",
-      idBono1:"",
-      idBono2:"",
+      idCriterio: "",
+      idCampoRegla: "",
+      idCondiCompara: "",
+      ValorCriterio: "",
+      idOperadorCompara: "",
+      idProducto1: "",
+      idProducto2: "",
+      idBono1: "",
+      idBono2: "",
       descCampania: [pr.descCampania, [Validators.maxLength(60)]],
       fechaInicio: [pr.fechaInicio, [Validators.required]],
       fechaFin: [pr.fechaFin, [Validators.required]],
       idTipoCampania: [pr.idTipoCampania],
       idTipoBeneficio: [pr.idTipoBeneficio],
       flgEstado: [pr.flgEstado === 'A' ? 'ACTIVO' : 'INACTIVO'],
-      flgConfigurar:"",
+      flgConfigurar: "",
       fechaCreacion: [pr.fechaCreacion],
       usuarioCreacion: [pr.usuarioCreacion],
       fechaActualizacion: [pr.fechaActualizacion],

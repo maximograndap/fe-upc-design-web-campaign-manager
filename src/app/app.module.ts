@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ProductDetailComponent } from './pages/maintenances/products/product-detail/product-detail.component';
 import { BonosreportsComponent } from './pages/reports/bonosreports/bonosreports.component';
@@ -71,7 +72,8 @@ import { CampaignConfigComponent } from './pages/maintenances/campaigns/campaign
     MatRadioModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

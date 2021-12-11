@@ -72,11 +72,8 @@ export class CampaignsComponent implements OnInit, AfterViewInit {
   openFormConfig(row?: ICampaign) {
 
     this.campaignService.get(row?.idCampania)
-      //this.campaignService.get('1000')
       .subscribe(response => {
-        console.log('RESPONSE DETALLE CAMPAÑA : ', response);
         const campaign: ICampaign = response.data as ICampaign;
-
         const dialogRef = this.dialog.open(CampaignConfigComponent, { data: { ...campaign } });
 
         dialogRef.afterClosed()
