@@ -21,7 +21,7 @@ export class CampaignDetailComponent implements OnInit {
     console.log('DATA ENTRANTE : ', JSON.stringify(data));
     this.isNewRecord = data.idCampania ? false : true;
     if (this.isNewRecord) {
-      this.title = 'NUEVO CAMPAÑA';
+      this.title = 'NUEVA CAMPAÑA';
       this.campaignRequest = {
         nombreCampania: '',
         descCampania: '',

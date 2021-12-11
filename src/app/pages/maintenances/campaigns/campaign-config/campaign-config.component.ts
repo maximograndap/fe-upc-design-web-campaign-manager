@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ICampaign } from 'src/app/interfaces/campaign.interface';
-//import { CampaignService } from 'src/app/services/campaign.service';
 import { CampaignConfigService } from 'src/app/services/campaignConfig.service';
 
 
@@ -17,7 +16,7 @@ export class CampaignConfigComponent implements OnInit {
   title: string;
   form: FormGroup;
   campaignRequest: ICampaign;
-  isNewRecord: boolean; 
+  isNewRecord: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ICampaign, private dialogRef: MatDialogRef<CampaignConfigComponent>,
     public fb: FormBuilder, private campaignService: CampaignConfigService) {
@@ -76,7 +75,7 @@ export class CampaignConfigComponent implements OnInit {
       nombreRegla: "",
       idCriterio:"",
       idCampoRegla:"",
-      idCondiCompara:"",      
+      idCondiCompara:"",
       ValorCriterio:"",
       idOperadorCompara:"",
       idProducto1:"",

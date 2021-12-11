@@ -78,28 +78,28 @@
           <input readonly="true" matInput formControlName="flgEstado">
         </mat-form-field>
       </div>
-      <div>
+      <div *ngIf="!isNewRecord">
         <hr />
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Usuario de registro</mat-label>
           <input readonly="true" matInput formControlName="usuarioCreacion">
         </mat-form-field>
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Fecha de registro</mat-label>
           <input readonly="true" matInput formControlName="fechaCreacion">
         </mat-form-field>
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Usuario de actualización</mat-label>
           <input readonly="true" matInput formControlName="usuarioActualizacion">
         </mat-form-field>
       </div>
-      <div class="col-md-6 col-12">
+      <div *ngIf="!isNewRecord" class="col-md-6 col-12">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Fecha de actualización</mat-label>
           <input readonly="true" matInput formControlName="fechaActualizacion">

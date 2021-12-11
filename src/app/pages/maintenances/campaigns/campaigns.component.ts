@@ -16,7 +16,7 @@ import { IResponse } from 'src/app/interfaces/response.interface';
 })
 
 export class CampaignsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['idCampania', 'nombreCampania', 'fechaInicio', 'fechaFin', 'flgEstado','fechaCreacion', 'usuarioCreacion','flgConfigurar'];
+  displayedColumns: string[] = ['idCampania', 'nombreCampania', 'fechaInicio', 'fechaFin', 'flgEstado', 'fechaCreacion', 'usuarioCreacion', 'flgConfigurar'];
 
   dataSource: MatTableDataSource<ICampaign>;
 
@@ -44,25 +44,35 @@ export class CampaignsComponent implements OnInit, AfterViewInit {
 
   openFormDetail(row?: ICampaign) {
 
-    this.campaignService.get(row?.idCampania)
-      .subscribe(response => {
-        console.log('RESPONSE DETALLE CAMPAÑA : ', response);
-        const campaign: ICampaign = response.data as ICampaign;
+    if (row) {
+      this.campaignService.get(row?.idCampania)
+        .subscribe(response => {
+          console.log('RESPONSE DETALLE CAMPAÑA : ', response);
+          const campaign: ICampaign = response.data as ICampaign;
 
-        const dialogRef = this.dialog.open(CampaignDetailComponent, { data: { ...campaign } });
+          const dialogRef = this.dialog.open(CampaignDetailComponent, { data: { ...campaign } });
 
-        dialogRef.afterClosed()
-          .subscribe(result => {
-            this.listarCampanias()
-          });
-      })
+          dialogRef.afterClosed()
+            .subscribe(result => {
+              this.listarCampanias()
+            });
+        })
+    } else {
+      const dialogRef = this.dialog.open(CampaignDetailComponent, { data: {} });
+
+      dialogRef.afterClosed()
+        .subscribe(result => {
+          this.listarCampanias()
+        });
+    }
+
 
   }
 
   openFormConfig(row?: ICampaign) {
-    
+
     this.campaignService.get(row?.idCampania)
-    //this.campaignService.get('1000')
+      //this.campaignService.get('1000')
       .subscribe(response => {
         console.log('RESPONSE DETALLE CAMPAÑA : ', response);
         const campaign: ICampaign = response.data as ICampaign;

@@ -8,12 +8,15 @@ import { IResponse } from '../interfaces/response.interface';
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-  headers: HttpHeaders = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('JWT-TOKEN')}`);
+  headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('JWT-TOKEN')}`
+  });
+
   path: string = 'api/product/'
   constructor(private http: HttpClient) { }
 
   list(): Observable<IResponse> {
-    console.log('HEADERS:', this.headers);
     return this.http.get<IResponse>(`${environment.apiUrl + this.path}getallproducts`).pipe();
   }
 
