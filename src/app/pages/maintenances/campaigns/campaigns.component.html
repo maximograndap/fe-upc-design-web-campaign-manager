@@ -53,12 +53,12 @@
 
               <ng-container matColumnDef="fechaInicio">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Inicio </th>
-                <td mat-cell *matCellDef="let row"> {{row.fechaCreacion | date:"dd/MM/yyyy"}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.fechaInicio | date:"dd/MM/yyyy"}} </td>
               </ng-container>
 
               <ng-container matColumnDef="fechaFin">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Fin </th>
-                <td mat-cell *matCellDef="let row"> {{row.fechaCreacion | date:"dd/MM/yyyy"}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.fechaFin | date:"dd/MM/yyyy"}} </td>
               </ng-container>
 
               <ng-container matColumnDef="usuarioCreacion">

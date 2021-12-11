@@ -13,7 +13,6 @@ export class BonosreportsComponent implements OnInit {
   search: string = '';
   searchForm: FormGroup;
   customerbonos: any;
-  
 
   constructor(private readonly brs: BonosreportsService,
     private activateRoute: ActivatedRoute,
@@ -26,7 +25,7 @@ export class BonosreportsComponent implements OnInit {
       })
     }
 
-    ngOnInit(): void {  
+    ngOnInit(): void {
       this.searchForm = this.fb.group({
         search: [this.search]
       });
