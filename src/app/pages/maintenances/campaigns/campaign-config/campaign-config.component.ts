@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ICampaign } from 'src/app/interfaces/campaign.interface';
-import { CampaignConfigService } from 'src/app/services/campaignConfig.service';
+import { CampaignService } from 'src/app/services/campaign.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class CampaignConfigComponent implements OnInit {
   isNewRecord: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ICampaign, private dialogRef: MatDialogRef<CampaignConfigComponent>,
-    public fb: FormBuilder, private campaignService: CampaignConfigService) {
+    public fb: FormBuilder, private campaignService: CampaignService) {
     console.log('DATA ENTRANTE : ', JSON.stringify(data));
     this.isNewRecord = data.idCampania ? false : true;
     if (this.isNewRecord) {
